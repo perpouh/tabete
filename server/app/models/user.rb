@@ -5,6 +5,9 @@ class User < ApplicationRecord
           :confirmable
   include DeviseTokenAuth::Concerns::User
   
+  has_many :articles
+  belongs_to :store, optional: true
+
   enum user_type: {
     general: 0,
     admin: 1
