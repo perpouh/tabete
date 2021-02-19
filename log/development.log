@@ -1,0 +1,652 @@
+Started GET "/" for 192.168.0.1 at 2021-02-19 05:38:08 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.7ms | Allocations: 308)
+Completed 200 OK in 18ms (Views: 14.8ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started POST "/auth/sign_in" for 192.168.0.1 at 2021-02-19 05:38:13 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"WMPH8IMMKvHEFJyTzrkAkw\":{\"token\":\"$2a$10$onJ4UBGh64h6ls.8NrnzneNV8m6ct8LLOCGtxNJqnzQAsZJ0Niw22\",\"expiry\":1614922694}}', `users`.`updated_at` = '2021-02-19 05:38:14.428675' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 463ms (ActiveRecord: 18.4ms | Allocations: 26773)
+
+
+  
+NoMethodError (undefined method `current_sign_in_at' for #<User:0x00007f7a414deed8>):
+  
+activemodel (6.0.3.5) lib/active_model/attribute_methods.rb:432:in `method_missing'
+devise (4.7.3) lib/devise/models/trackable.rb:21:in `update_tracked_fields'
+devise (4.7.3) lib/devise/models/trackable.rb:39:in `update_tracked_fields!'
+devise (4.7.3) lib/devise/hooks/trackable.rb:9:in `block in <main>'
+warden (1.2.9) lib/warden/hooks.rb:15:in `block in _run_callbacks'
+warden (1.2.9) lib/warden/hooks.rb:10:in `each'
+warden (1.2.9) lib/warden/hooks.rb:10:in `_run_callbacks'
+warden (1.2.9) lib/warden/manager.rb:52:in `_run_callbacks'
+warden (1.2.9) lib/warden/proxy.rb:191:in `set_user'
+devise (4.7.3) lib/devise/controllers/sign_in_out.rb:53:in `sign_in'
+devise_token_auth (1.1.5) app/controllers/devise_token_auth/sessions_controller.rb:32:in `create'
+actionpack (6.0.3.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.5) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.5) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (6.0.3.5) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:834:in `call'
+bullet (6.1.3) lib/bullet/rack.rb:12:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.5) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+better_errors (2.9.1) lib/better_errors/middleware.rb:62:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/auth/sign_in" for 192.168.0.1 at 2021-02-19 05:39:26 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DeviseTokenAuth::SessionsController#create as */*
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"WMPH8IMMKvHEFJyTzrkAkw\":{\"token\":\"$2a$10$onJ4UBGh64h6ls.8NrnzneNV8m6ct8LLOCGtxNJqnzQAsZJ0Niw22\",\"expiry\":1614922694},\"CKetYDNltmE63eS34kzLUA\":{\"token\":\"$2a$10$NT2pOnsYDBumX8ksu45MduMrVNegKiepF6/SpMi2hXfyDXum9mNvS\",\"expiry\":1614922767}}', `users`.`updated_at` = '2021-02-19 05:39:27.565032' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[37mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1 FOR UPDATE[0m
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE `users` SET `users`.`tokens` = '{\"WMPH8IMMKvHEFJyTzrkAkw\":{\"token\":\"$2a$10$onJ4UBGh64h6ls.8NrnzneNV8m6ct8LLOCGtxNJqnzQAsZJ0Niw22\",\"expiry\":1614922694},\"CKetYDNltmE63eS34kzLUA\":{\"token\":\"$2a$10$iyt5tZPPsvMwtNeIp9CPD.OJm86eY1zBErhm/g8XktdNAaNaewZPG\",\"expiry\":1614922767,\"last_token\":\"$2a$10$NT2pOnsYDBumX8ksu45MduMrVNegKiepF6/SpMi2hXfyDXum9mNvS\",\"updated_at\":\"2021-02-19T05:39:27Z\"}}', `users`.`updated_at` = '2021-02-19 05:39:27.692996' WHERE `users`.`id` = 1[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 543ms (Views: 0.3ms | ActiveRecord: 18.5ms | Allocations: 29080)
+
+
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('5353054688813366850', 0)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateArticles (20210219055443)
+  [1m[35m (67.0ms)[0m  [1m[35mCREATE TABLE `articles` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` int, `store_id` int, `body` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20210219055443')[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStores (20210219055708)
+  [1m[35m (58.7ms)[0m  [1m[35mCREATE TABLE `stores` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `address` varchar(255), `place` varchar(255), `nearest_station` varchar(255), `phone_number` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20210219055708')[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('5353054688813366850')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (0.7ms)[0m  [1m[32mINSERT INTO `stores` (`name`, `created_at`, `updated_at`) VALUES ('幻想茶房', '2021-02-19 06:18:37.404524', '2021-02-19 06:18:37.404524')[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 192.168.0.1 at 2021-02-19 06:18:53 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.3ms | Allocations: 308)
+Completed 200 OK in 18ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started GET "/stores/1" for 192.168.0.1 at 2021-02-19 06:19:00 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+Completed 406 Not Acceptable in 34ms (ActiveRecord: 5.8ms | Allocations: 8904)
+
+
+  
+ActionController::UnknownFormat (StoresController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []):
+  
+actionpack (6.0.3.5) lib/action_controller/metal/implicit_render.rb:42:in `default_render'
+actionpack (6.0.3.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.5) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.5) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.5) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:834:in `call'
+bullet (6.1.3) lib/bullet/rack.rb:12:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.5) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+better_errors (2.9.1) lib/better_errors/middleware.rb:62:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:19:07 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (1.3ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  Rendered stores/show.json.jbuilder (Duration: 5.2ms | Allocations: 238)
+Completed 200 OK in 21ms (Views: 9.1ms | ActiveRecord: 1.3ms | Allocations: 1418)
+
+
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:19:48 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  Rendered stores/show.json.jbuilder (Duration: 5.2ms | Allocations: 219)
+Completed 200 OK in 18ms (Views: 9.2ms | ActiveRecord: 0.7ms | Allocations: 1383)
+
+
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:20:44 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`store_id` = 1[0m
+  ↳ app/views/stores/show.json.jbuilder:5
+  Rendered stores/show.json.jbuilder (Duration: 32.5ms | Allocations: 8275)
+Completed 200 OK in 79ms (Views: 32.0ms | ActiveRecord: 8.5ms | Allocations: 16169)
+
+
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:21:50 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 2295)
+
+
+  
+SyntaxError (/app/app/models/store.rb:2: syntax error, unexpected '\n', expecting =>):
+  
+app/models/store.rb:2: syntax error, unexpected '\n', expecting =>
+app/models/store.rb:2: syntax error, unexpected '\n', expecting =>
+app/models/store.rb:2: syntax error, unexpected '\n', expecting =>
+app/controllers/stores_controller.rb:8:in `set_store'
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:22:02 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 11[0m
+  Rendered stores/show.json.jbuilder (Duration: 63.6ms | Allocations: 21806)
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 9.5ms | Allocations: 28975)
+
+
+  
+ActionView::Template::Error (undefined method `official?' for #<User::ActiveRecord_Relation:0x00007fe6a5770798>):
+    1: json.store do
+    2:   json.merge! @store.attributes
+    3:   json.official_accounts @store.official_accounts
+    4: end
+  
+app/models/store.rb:2:in `block in <class:Store>'
+app/views/stores/show.json.jbuilder:3
+app/views/stores/show.json.jbuilder:1
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:23:55 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 11[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 11[0m
+  Rendered stores/show.json.jbuilder (Duration: 48.4ms | Allocations: 22897)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 8.5ms | Allocations: 30027)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `official' for #<User::ActiveRecord_Relation:0x00007fe6a3181118>):
+    1: json.store do
+    2:   json.merge! @store.attributes
+    3:   json.official_accounts @store.official_accounts
+    4: end
+  
+app/models/store.rb:2:in `block in <class:Store>'
+app/views/stores/show.json.jbuilder:3
+app/views/stores/show.json.jbuilder:1
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:26:25 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 11[0m
+  Rendered stores/show.json.jbuilder (Duration: 65.8ms | Allocations: 21207)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 9.1ms | Allocations: 28353)
+
+
+  
+ActionView::Template::Error (undefined method `official?' for #<User::ActiveRecord_Relation:0x00007fe6a2ab3930>):
+    1: json.store do
+    2:   json.merge! @store.attributes
+    3:   json.official_accounts @store.official_accounts
+    4: end
+  
+app/models/store.rb:2:in `block in <class:Store>'
+app/views/stores/show.json.jbuilder:3
+app/views/stores/show.json.jbuilder:1
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:27:18 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.8ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`store_id` = 1 AND `users`.`official` = TRUE[0m
+  ↳ app/views/stores/show.json.jbuilder:5
+  Rendered stores/show.json.jbuilder (Duration: 15.1ms | Allocations: 3807)
+Completed 200 OK in 59ms (Views: 16.7ms | ActiveRecord: 8.9ms | Allocations: 10952)
+
+
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `confirmed_at`, `email`, `official`, `store_id`, `created_at`, `updated_at`) VALUES ('test2@example.com', '2021-02-19 06:28:23', 'test2@example.com', TRUE, 1, '2021-02-19 06:28:23.018899', '2021-02-19 06:28:23.018899')[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test2@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `confirmation_token`, `confirmation_sent_at`, `email`, `official`, `store_id`, `created_at`, `updated_at`) VALUES ('test2@example.com', '$2a$12$T0BdowUCJqFSdkJuGpokVOWVdRik3R42lEXAYUsJyw7dGY/t2GZ6K', 'axSPTqzdoaY2SMVHy8H3', '2021-02-19 06:29:24', 'test2@example.com', TRUE, 1, '2021-02-19 06:29:24.439864', '2021-02-19 06:29:24.439864')[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE `users` SET `users`.`confirmed_at` = '2021-02-19 06:29:24', `users`.`updated_at` = '2021-02-19 06:29:24.448609' WHERE `users`.`id` = 3[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'test3@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `confirmation_token`, `confirmation_sent_at`, `email`, `official`, `store_id`, `created_at`, `updated_at`) VALUES ('test3@example.com', '$2a$12$FXWPY5nLzBD3vBtx8AD4z.qz.v8HoC2fkSutBPiJCtCWYXGpActWi', '7yqhMm9-hPf_Yzv_zasq', '2021-02-19 06:29:43', 'test3@example.com', TRUE, 2, '2021-02-19 06:29:43.452895', '2021-02-19 06:29:43.452895')[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE `users` SET `users`.`confirmed_at` = '2021-02-19 06:29:43', `users`.`updated_at` = '2021-02-19 06:29:43.466833' WHERE `users`.`id` = 4[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:29:46 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (1.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`store_id` = 1 AND `users`.`official` = TRUE[0m
+  ↳ app/views/stores/show.json.jbuilder:5
+  Rendered stores/show.json.jbuilder (Duration: 42.7ms | Allocations: 14788)
+Completed 200 OK in 58ms (Views: 45.4ms | ActiveRecord: 3.5ms | Allocations: 15635)
+
+
+Started GET "/stores/1.json" for 192.168.0.1 at 2021-02-19 06:31:15 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`store_id` = 1 AND `users`.`official` = TRUE[0m
+  ↳ app/views/stores/show.json.jbuilder:5
+  Rendered stores/show.json.jbuilder (Duration: 45.9ms | Allocations: 17260)
+Completed 200 OK in 79ms (Views: 45.5ms | ActiveRecord: 8.7ms | Allocations: 24331)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:41:35 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 0.0ms | Allocations: 47431)
+
+
+  
+NoMethodError (undefined method `set_article' for #<ArticlesController:0x00007fe6a30bcbb0>
+Did you mean?  set_trace_func):
+  
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:428:in `block in make_lambda'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:181:in `block (2 levels) in halting_and_conditional'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:182:in `block in halting_and_conditional'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:513:in `each'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.3.5) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.5) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.5) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.5) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.5) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.5) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.5) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.5) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.5) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.5) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.5) lib/action_dispatch/routing/route_set.rb:834:in `call'
+bullet (6.1.3) lib/bullet/rack.rb:12:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.5) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.5) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+better_errors (2.9.1) lib/better_errors/middleware.rb:62:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:42:57 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+Completed 404 Not Found in 25ms (ActiveRecord: 5.5ms | Allocations: 2945)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=1):
+  
+app/controllers/articles_controller.rb:9:in `set_article'
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  [1m[36mArticle Create (0.7ms)[0m  [1m[32mINSERT INTO `articles` (`user_id`, `store_id`, `body`, `created_at`, `updated_at`) VALUES (1, 1, 'テスト', '2021-02-19 06:43:36.868677', '2021-02-19 06:43:36.868677')[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:43:39 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 5.4ms | Allocations: 213)
+Completed 200 OK in 36ms (Views: 11.5ms | ActiveRecord: 1.0ms | Allocations: 4937)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:44:47 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.7ms | Allocations: 136)
+Completed 200 OK in 11ms (Views: 5.0ms | ActiveRecord: 0.6ms | Allocations: 982)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:44:53 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.5ms | Allocations: 136)
+Completed 200 OK in 12ms (Views: 3.8ms | ActiveRecord: 1.4ms | Allocations: 981)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:45:34 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.8ms | Allocations: 136)
+Completed 200 OK in 13ms (Views: 4.6ms | ActiveRecord: 1.1ms | Allocations: 981)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:45:49 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.8ms | Allocations: 136)
+Completed 200 OK in 12ms (Views: 5.8ms | ActiveRecord: 1.0ms | Allocations: 982)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:46:30 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1008.2ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.5ms | Allocations: 136)
+Completed 200 OK in 1020ms (Views: 3.8ms | ActiveRecord: 1008.2ms | Allocations: 982)
+
+
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  [1m[36mStore Load (0.8ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:48:40 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.8ms | Allocations: 136)
+Completed 200 OK in 28ms (Views: 16.1ms | ActiveRecord: 1.6ms | Allocations: 981)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:48:45 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  Rendered articles/show.json.jbuilder (Duration: 0.6ms | Allocations: 136)
+Completed 200 OK in 12ms (Views: 4.9ms | ActiveRecord: 0.9ms | Allocations: 981)
+
+
+Started GET "/articles/1.json" for 192.168.0.1 at 2021-02-19 06:49:34 +0000
+Cannot render console from 192.168.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by ArticlesController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/articles_controller.rb:9:in `set_article'
+  Rendering articles/show.json.jbuilder
+  [1m[36mStore Load (0.8ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/articles/show.json.jbuilder:3
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/articles/show.json.jbuilder:4
+  Rendered articles/show.json.jbuilder (Duration: 164.0ms | Allocations: 28271)
+Completed 200 OK in 237ms (Views: 136.9ms | ActiveRecord: 53.3ms | Allocations: 35595)
+
+
+  [1m[35m (1.4ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL AND `users`.`provider` = 'email' LIMIT 1[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`name` = 'index' LIMIT 1[0m
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` IS NULL LIMIT 1[0m
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`nickname` IS NULL LIMIT 1[0m
+Started GET "/" for 172.18.0.1 at 2021-02-19 09:54:25 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (6.4ms)[0m  [1m[35mSET NAMES utf8mb4 COLLATE utf8mb4_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.0.3.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.1ms | Allocations: 308)
+Completed 200 OK in 18ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 1611)
+
+
+Started GET "/stores/1.json" for 172.18.0.1 at 2021-02-19 09:54:43 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by StoresController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT `stores`.* FROM `stores` WHERE `stores`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/stores_controller.rb:8:in `set_store'
+  Rendering stores/show.json.jbuilder
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`store_id` = 1 AND `users`.`official` = TRUE[0m
+  ↳ app/views/stores/show.json.jbuilder:5
+  Rendered stores/show.json.jbuilder (Duration: 51.2ms | Allocations: 19754)
+Completed 200 OK in 95ms (Views: 45.1ms | ActiveRecord: 21.8ms | Allocations: 28383)
+
+
