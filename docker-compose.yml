@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: 'tabete_db'
+    image: mysql:5.7.31
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    ports:
+      - "33006:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    command: --innodb-use-native-aio=0
+  nginx:
+    container_name: 'tabete_nginx'
+    build: ./nginx
+    command: >
+      /bin/bash -c
+      "envsubst '$$NGINX_SERVER_NAME $$NGINX_SERVER_PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
+      && nginx -g 'daemon off;'"
+    environment:
+      - TZ=Asia/Tokyo
+      - NGINX_SERVER_NAME=localhost
+      - NGINX_SERVER_PORT=80
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - tmp:/server/app/tmp
+      - public:/server/app/public
+    depends_on:
+      - client
+  server:
+    container_name: 'tabete_server'
+    build:
+      context: ./server
+      args:
+        ASSETS_PRECOMPILE: 'false'
+    environment:
+      RAILS_ENV: development
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_DATABASE: tabete_development
+      CLIENT_HOST: localhost
+    command: bundle exec rails s -b 0.0.0.0
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/app
+      - bundle:/usr/local/bundle
+      - tmp:/app/tmp
+      - public:/app/public
+    links:
+      - db
+    ports:
+      - 3030:3000
+  client:
+    build: ./client
+    volumes:
+      - ./data/www:/app
+    command: yarn serve
+    tty: true
+    environment:
+       VUE_APP_API_ENDPOINT: http://localhost:3030
+    links:
+      - server
+volumes:
+  mysql_data:
+  bundle:
+  tmp:
+  public:
