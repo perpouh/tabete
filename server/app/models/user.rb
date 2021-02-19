@@ -12,4 +12,9 @@ class User < ApplicationRecord
     general: 0,
     admin: 1
   }
+
+  validates :name, ban_reserved: true, length: {in: 5..15}, uniqueness: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :nickname, length: {in: 5..15}
+
 end
