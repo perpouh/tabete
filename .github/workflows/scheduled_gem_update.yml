@@ -10,9 +10,33 @@ jobs:
     steps:
       - name: checkout dev
         uses: actions/checkout@v2
-      - name: pull request on bundle update
-        uses: supermanner/pull-request-on-bundle-update@v1.0.1
+      - name: Create new Branch
+        env:
+          TZ: "Asia/Tokyo"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=`date +"%Y%m%d"`
+          BRANCH_NAME="feature/gem-upgrade_$DATE"
+          git checkout -b "$BRANCH_NAME"
+      - name: Set up Ruby 2.6
+        # actions/checkoutリポジトリのaction.ymlを利用する
+        uses: actions/setup-ruby@v1 # https://github.com/actions/setup-ruby/blob/master/action.yml
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_user_name: perpouh
-          git_email: perpouh@gmail.com
+          ruby-version: 2.6.x
+      - name: bundle update
+        env:
+          GITHUB_USER: ${{ secrets.GITHUB_USER }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gem install bundler bundler-diff
+          cd server
+          bundle update
+          BUNDLE_DIFF="$(bundle diff -f md_table)"
+          git config user.name perpouh
+          git config user.email perpouh@gmail.com
+          cd server
+          DATE=`date +"%Y%m%d"`
+          git add Gemfile.lockå
+          git commit -m "bundle update $DATE"
+          git push origin "feature/gem-upgrade_$DATE"
+          hub pull-request -b develop -m "[Scheduled]gem_update to develop\n\n$BUNDLE_DIFF"
