@@ -36,7 +36,7 @@ jobs:
           git config user.email perpouh@gmail.com
           cd server
           DATE=`date +"%Y%m%d"`
-          git add Gemfile.lockå
+          git add Gemfile.lock
           git commit -m "bundle update $DATE"
           git push origin "feature/gem-upgrade_$DATE"
           hub pull-request -b develop -m "[Scheduled]gem_update to develop\n\n$BUNDLE_DIFF"

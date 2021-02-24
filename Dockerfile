@@ -20,6 +20,7 @@ RUN apk update \
       curl-dev \
       gcc \
       g++ \
+      git \
       libxml2-dev \
       libxslt-dev \
       linux-headers \
