@@ -1,6 +1,8 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show]
-  def show; end
+  def show
+    @articles = @store.articles.page(params[:page]).per(20)
+  end
 
   private
 
