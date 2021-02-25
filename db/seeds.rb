@@ -5,3 +5,77 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+[
+  "北海道",
+  "青森県",
+  "岩手県",
+  "宮城県",
+  "秋田県",
+  "山形県",
+  "福島県",
+  "茨城県",
+  "栃木県",
+  "群馬県",
+  "埼玉県",
+  "千葉県",
+  "東京都",
+  "神奈川県",
+  "新潟県",
+  "富山県",
+  "石川県",
+  "福井県",
+  "山梨県",
+  "長野県",
+  "岐阜県",
+  "静岡県",
+  "愛知県",
+  "三重県",
+  "滋賀県",
+  "京都府",
+  "大阪府",
+  "兵庫県",
+  "奈良県",
+  "和歌山県",
+  "鳥取県",
+  "島根県",
+  "岡山県",
+  "広島県",
+  "山口県",
+  "徳島県",
+  "香川県",
+  "愛媛県",
+  "高知県",
+  "福岡県",
+  "佐賀県",
+  "長崎県",
+  "熊本県",
+  "大分県",
+  "宮崎県",
+  "鹿児島県",
+  "沖縄県"
+].map do |pref|
+  Prefecture.find_or_create_by({name: pref})
+end
+
+@store = Store.find_or_create_by({name: '幻想茶房'}) do |store|
+  store.prefecture_id = 4
+  store.address = "宮城県仙台市青葉区中央1-1-1"
+  store.place = "JR仙台駅より徒歩1分"
+  store.phone_number = "000-0000-0000"
+end
+
+User.find_or_create_by({email: 'store@example.com'}) do |user|
+  user.store_id = @store.id
+  user.official = true
+  user.password = "password"
+end.confirm
+
+@user = User.find_or_create_by({email: 'test@example.com'}) do |user|
+  user.password = "password"
+end
+@user.confirm
+
+Article.find_or_create_by({user_id: @user.id, store_id: @store.id}) do |article|
+  article.body = "SNS風にしようとするとタイトルはいらない気がするんだけどデザイン的にはタイトルほしい気がするの悩む"
+end
