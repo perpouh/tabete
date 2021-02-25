@@ -30,3 +30,5 @@ server/config/master.key
 
 gh-pages
 gh-pages.pub
+
+/**/*.log
