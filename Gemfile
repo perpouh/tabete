@@ -30,6 +30,8 @@ gem 'devise_token_auth'
 gem 'cancancan'
 # gem 'omniauth'
 
+gem 'kaminari'
+
 group :development, :test do
   # static code analyzer and code formatter
   gem 'rubocop-rails'
