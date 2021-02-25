@@ -32,6 +32,8 @@ gem 'cancancan'
 
 gem 'kaminari'
 
+gem 'shrine'
+
 group :development, :test do
   # static code analyzer and code formatter
   gem 'rubocop-rails'
