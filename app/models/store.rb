@@ -5,5 +5,5 @@ class Store < ApplicationRecord
 
   accepts_nested_attributes_for :store_images
 
-  include Prefecture;
+  include Prefecture
 end

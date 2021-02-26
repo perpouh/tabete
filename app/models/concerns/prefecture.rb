@@ -1,6 +1,7 @@
 module Prefecture
   extend ActiveSupport::Concern
 
+  # rubocop:disable Metrics/BlockLength
   included do
     enum prefecture_id: {
       hokkaido: 1,
@@ -49,7 +50,8 @@ module Prefecture
       oita: 44,
       miyazaki: 45,
       kagoshima: 46,
-      okinawa: 47,
-    }  
+      okinawa: 47
+    }
   end
+  # rubocop:enable Metrics/BlockLength
 end
