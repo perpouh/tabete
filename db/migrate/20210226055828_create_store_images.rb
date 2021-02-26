@@ -3,7 +3,7 @@ class CreateStoreImages < ActiveRecord::Migration[6.0]
     create_table :store_images do |t|
       t.integer :store_id
       t.text :image
-      t.stiring :caption
+      t.string :caption
       t.integer :display_order
 
       t.timestamps
