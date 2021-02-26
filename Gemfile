@@ -34,6 +34,8 @@ gem 'kaminari'
 
 gem 'shrine'
 
+gem 'enum_help'
+
 group :development, :test do
   # static code analyzer and code formatter
   gem 'rubocop-rails'
