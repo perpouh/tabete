@@ -1,0 +1,56 @@
+<%= form_with model: [:admin, store] do |form| %>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <th>店舗名</th>
+      <td>
+        <%= form.text_field :name %>
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td>
+        <input type="text" placeholder="999-9999"><button type="button" class="btn btn-primary">住所補完</button>
+      </td>
+    </tr>
+    <tr>
+      <th>都道府県</th>
+      <td>
+        <%= form.select :prefecture_id do %>
+          <%= options_for_select(Store.prefecture_ids_i18n.map{ |k,v| [v, k] }) %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td>
+        <%= form.text_area :address %>
+      </td>
+    </tr>
+    <tr>
+      <th>最寄り駅</th>
+      <td>
+        <%= form.text_area :nearest_station %>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        <%= form.phone_field :phone_number %>
+      </td>
+    </tr>
+    <%= form.fields_for :store_images do |image_form| %>
+    <tr>
+      <th>画像</th>
+      <td>
+        <%= image_form.file_field :image %>
+        <%= image_form.text_field :caption %>
+        <%= image_form.number_field :display_order %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= form.submit %>
+<% end %>
