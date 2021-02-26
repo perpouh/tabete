@@ -2,6 +2,7 @@ module Admin
   class StoresController < AdminController
     def new
       @store = Store.new
+      3.times { @store.store_images.build }
     end
 
     def create
@@ -13,7 +14,7 @@ module Admin
     private
 
     def stores_params
-      params.require(:store).permit(:name, :prefecture_id, :address, :nearest_station, :phone_number, :commit)
+      params.require(:store).permit(:name, :prefecture_id, :address, :nearest_station, :phone_number, :commit, store_images_attributes: [:image])
     end
   end
 end

@@ -40,6 +40,14 @@
         <%= form.phone_field :phone_number %>
       </td>
     </tr>
+    <%= form.fields_for :store_images do |image_form| %>
+    <tr>
+      <th>画像</th>
+      <td>
+        <%= image_form.file_field :image %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <%= form.submit %>
