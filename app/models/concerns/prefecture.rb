@@ -2,7 +2,7 @@ module Prefecture
   extend ActiveSupport::Concern
 
   included do
-    enum prefectures: {
+    enum prefecture_id: {
       hokkaido: 1,
       aomori: 2,
       iwate: 3,

@@ -1,7 +1,7 @@
 ja: 
   enums: 
     store:
-      prefectures: 
+      prefecture_id: 
         hokkaido: 北海道
         aomori: 青森県
         iwate: 岩手県
