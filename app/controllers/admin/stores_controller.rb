@@ -14,7 +14,19 @@ module Admin
     private
 
     def stores_params
-      params.require(:store).permit(:name, :prefecture_id, :address, :nearest_station, :phone_number, :commit, store_images_attributes: [:image])
+      params.require(:store).permit(
+        :name,
+        :prefecture_id,
+        :address,
+        :nearest_station,
+        :phone_number,
+        :commit,
+        store_images_attributes: [
+          :image,
+          :caption,
+          :display_order
+        ]
+      )
     end
   end
 end
