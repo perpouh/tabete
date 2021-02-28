@@ -14,7 +14,7 @@ on:
     workflows:
       - scheduled_gem_update
     branches:
-      - 'feature/gem-upgrade_**'
+      - 'bundle_update/**'
     types:
       - completed
 
