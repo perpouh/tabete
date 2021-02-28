@@ -10,7 +10,7 @@ jobs:
       - name: checkout dev
         uses: actions/checkout@v2
       - name: pull request on bundle update
-        uses: perpouh/pull-request-on-bundle-update@v1.0.2
+        uses: perpouh/pull-request-on-bundle-update@ee726454cfeca4225dc03c88a8ba58c35e04e28c
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_user_name: perpouh
