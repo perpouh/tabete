@@ -51,4 +51,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.i18n.default_locale = :ja
+
+  config.assets.compile = true
 end

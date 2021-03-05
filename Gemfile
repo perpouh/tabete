@@ -36,6 +36,8 @@ gem 'shrine'
 
 gem 'enum_help'
 
+gem 'bootstrap'
+
 group :development, :test do
   # static code analyzer and code formatter
   gem 'rubocop-rails'
