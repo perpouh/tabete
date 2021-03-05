@@ -1,0 +1,23 @@
+<h1># Stores Index</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>店舗名</th>
+      <th>所在地</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @stores.each do | store | %>
+      <tr>
+        <td><%= store.id %></td>
+        <td><%= store.name %></td>
+        <td><%= store.address %></td>
+        <td><%= link_to '編集', edit_admin_store_path(store) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @stores %>
