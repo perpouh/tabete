@@ -16,4 +16,10 @@ class ListsController < ApplicationController
     @list.validate!
     @list.save
   end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:title)
+  end
 end
