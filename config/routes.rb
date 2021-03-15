@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   namespace :my do
     get 'timeline', to: 'timeline#index', defaults: { format: :json }
+    resource 'clip', only: [:create, :destroy], defaults: { format: :json }
   end
 end

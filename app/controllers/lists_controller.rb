@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class ListsController < AuthenticatedController
 
   def show
     @list = List.find(params[:id])
@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.creator_id = current_user.id
     @list.validate!
     @list.save
   end

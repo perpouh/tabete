@@ -1,7 +1,7 @@
 module My
   class TimelineController < AuthenticatedController
     def index
-      @articles = current_user.followees.map{ |v| v.articles }
+      @articles = current_user.followees.map(&:articles)
     end
   end
 end
