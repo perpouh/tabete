@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :articles
   belongs_to :store, optional: true
 
+  has_many :follow, foreign_key: "follower_id"
+  has_many :followees, through: 'follow'
+
   enum user_type: {
     general: 0,
     admin: 1

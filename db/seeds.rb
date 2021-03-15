@@ -17,13 +17,38 @@ User.find_or_create_by({email: 'store@example.com'}) do |user|
   user.store_id = @store.id
   user.official = true
   user.password = "password"
+  user.name = "gensousabou"
+  user.nickname = "幻想茶房"
 end.confirm
 
-@user = User.find_or_create_by({email: 'test@example.com'}) do |user|
+@takashi = User.find_or_create_by({email: 'takashi@example.com'}) do |user|
   user.password = "password"
+  user.name = "takashi"
+  user.nickname = "たかし"
 end
-@user.confirm
+@takashi.confirm
 
-Article.find_or_create_by({user_id: @user.id, store_id: @store.id}) do |article|
-  article.body = "SNS風にしようとするとタイトルはいらない気がするんだけどデザイン的にはタイトルほしい気がするの悩む"
+@satoshi = User.find_or_create_by({email: 'satoshi@example.com'}) do |user|
+  user.password = "password"
+  user.name = "satoshi"
+  user.nickname = "さとし"
 end
+@satoshi.confirm
+
+@yusuke = User.find_or_create_by({email: 'yusuke@example.com'}) do |user|
+  user.password = "password"
+  user.name = "yusuke"
+  user.nickname = "ゆうすけ"
+end
+@yusuke.confirm
+
+Article.find_or_create_by({user_id: @takashi.id, store_id: @store.id}) do |article|
+  article.body = "たかしくんの記事そのいち"
+end
+
+Article.find_or_create_by({user_id: @satoshi.id, store_id: @store.id}) do |article|
+  article.body = "さとしくんの記事"
+end
+
+# ゆうすけくんはたかしくんをフォローしています
+Follow.find_or_create_by({follower_id: @yusuke.id, followee_id: @takashi.id})

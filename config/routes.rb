@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stores, only: [:new, :create, :edit, :update, :destroy]
   end
+  namespace :my do
+    get 'timeline', to: 'timeline#index', defaults: { format: :json }
+  end
 end

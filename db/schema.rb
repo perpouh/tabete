@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_065743) do
   end
 
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "creater_id"
+    t.integer "creator_id"
     t.string "title"
     t.boolean "visible"
     t.datetime "created_at", precision: 6, null: false
