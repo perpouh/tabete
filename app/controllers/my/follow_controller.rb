@@ -5,7 +5,7 @@ module My
 
       render json: { status: :ok }
     end
-    
+
     def destroy
       Follow.destroy({ follower_id: current_user.id, followee_id: params[:user_id] })
 

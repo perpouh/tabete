@@ -9,7 +9,7 @@ name: Rubocop
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
   push:
     paths:
     - '/server/app/**/*.rb'

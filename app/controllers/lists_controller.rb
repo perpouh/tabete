@@ -1,5 +1,4 @@
 class ListsController < AuthenticatedController
-
   def show
     @list = List.find(params[:id])
   end

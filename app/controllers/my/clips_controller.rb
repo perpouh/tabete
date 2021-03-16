@@ -5,7 +5,7 @@ module My
 
       render json: { status: :ok }
     end
-    
+
     def destroy
       Clip.destroy({ user_id: current_user.id, store_id: params[:store_id] })
 

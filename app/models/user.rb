@@ -32,6 +32,6 @@ class User < ApplicationRecord
   end
 
   def generate_default_list
-    List.create({creator_id: self.id, title: '未分類'})
+    List.create({ creator_id: id, title: '未分類' })
   end
 end
