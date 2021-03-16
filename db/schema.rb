@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_080520) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "lists", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "creator_id"
     t.string "title"
     t.boolean "visible"
