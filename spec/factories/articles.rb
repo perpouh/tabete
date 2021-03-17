@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :article do
-    user_id { 1 }
-    store_id { 1 }
+    association :author, factory: :user
+    association :store
     body { "MyString" }
   end
 end

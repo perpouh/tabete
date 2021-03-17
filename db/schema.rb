@@ -16,17 +16,21 @@ ActiveRecord::Schema.define(version: 2021_03_15_080520) do
     t.integer "article_id"
     t.text "image_data"
     t.string "caption"
+    t.integer "display_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "display_order"
+    t.bigint "articles_id"
+    t.index ["articles_id"], name: "index_article_images_on_articles_id"
   end
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "author_id"
     t.integer "store_id"
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_articles_on_users_id"
   end
 
   create_table "clips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -72,6 +76,8 @@ ActiveRecord::Schema.define(version: 2021_03_15_080520) do
     t.integer "display_order"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "stores_id"
+    t.index ["stores_id"], name: "index_store_images_on_stores_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

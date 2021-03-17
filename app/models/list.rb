@@ -12,11 +12,8 @@ class List < ApplicationRecord
   before_create :set_id
 
   private
-    def set_id
-      # id未設定、または、すでに同じidのレコードが存在する場合はループに入る
-      while self.id.blank? || User.find_by(id: self.id).present? do
-        # ランダムな20文字をidに設定し、whileの条件検証に戻る
-        self.id = SecureRandom.alphanumeric(20)
-      end
-    end
+
+  def set_id
+    self.id = SecureRandom.alphanumeric(20) while id.blank? || User.find_by(id: id).present?
+  end
 end

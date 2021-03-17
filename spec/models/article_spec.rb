@@ -5,8 +5,8 @@ RSpec.describe Article, type: :model do
   let(:store) { create(:store) }
   it '正常ケース' do
     article = Article.create({
-      body: "テスト",
-      user_id: user.id,
+      body: "テスト投稿",
+      author_id: user.id,
       store_id: store.id
     })
     article.images.build({

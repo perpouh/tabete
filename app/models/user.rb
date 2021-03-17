@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :confirmable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :articles
+  has_many :articles, foreign_key: 'author_id'
   belongs_to :store, optional: true
 
   has_many :follow, foreign_key: 'follower_id'

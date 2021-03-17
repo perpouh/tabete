@@ -17,7 +17,7 @@ RSpec.describe TimelineController, type: :request do
     context 'フォロイーがいる場合' do
       before do
         Follow.create({ followee_id: followee.id, follower_id: user.id })
-        followee.articles.create({'body': 'テスト'})
+        followee.articles.create({'body': 'テスト投稿'})
       end
       it 'returns one article' do
         get timeline_path, headers: @auth_tokens

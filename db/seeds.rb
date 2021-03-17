@@ -42,11 +42,11 @@ end
 end
 @yusuke.confirm
 
-Article.find_or_create_by({user_id: @takashi.id, store_id: @store.id}) do |article|
+Article.find_or_create_by({author_id: @takashi.id, store_id: @store.id}) do |article|
   article.body = "たかしくんの記事そのいち"
 end
 
-Article.find_or_create_by({user_id: @satoshi.id, store_id: @store.id}) do |article|
+Article.find_or_create_by({author_id: @satoshi.id, store_id: @store.id}) do |article|
   article.body = "さとしくんの記事"
 end
 
