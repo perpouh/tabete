@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   resources :stores, defaults: { format: :json }
   resources :articles, defaults: { format: :json }
   resources :lists, defaults: { format: :json }
+  resource :clip, only: [:create, :destroy], defaults: { format: :json }
+
+  get '/timeline', to: 'timeline#index', defaults: { format: :json }
+
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]
     resources :stores, only: [:index, :new, :create, :edit, :update, :destroy]
-  end
-  namespace :my do
-    get 'timeline', to: 'timeline#index', defaults: { format: :json }
-    resource 'clip', only: [:create, :destroy], defaults: { format: :json }
   end
 end

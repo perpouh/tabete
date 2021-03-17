@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe My::TimelineController, type: :request do
+RSpec.describe TimelineController, type: :request do
   let(:user) { create(:user) }
   let(:followee) { create(:user) }
   @auth_tokens = {}
@@ -11,7 +11,7 @@ RSpec.describe My::TimelineController, type: :request do
   end
   describe 'GET #index' do
     it 'returns http success' do
-      get my_timeline_path, headers: @auth_tokens
+      get timeline_path, headers: @auth_tokens
       expect(response).to have_http_status(:success)
     end
     context 'フォロイーがいる場合' do
@@ -20,7 +20,7 @@ RSpec.describe My::TimelineController, type: :request do
         followee.articles.create({'body': 'テスト'})
       end
       it 'returns one article' do
-        get my_timeline_path, headers: @auth_tokens
+        get timeline_path, headers: @auth_tokens
         expect(JSON.parse(response.body).count).to be 1
       end
     end
