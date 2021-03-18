@@ -8,6 +8,18 @@ RSpec.describe User, type: :model do
       )
     expect(user).to be_valid
   end
+  it "画像テスト" do
+    user = User.new(
+      email: "testman@example.com",
+      password: "password",
+      image_data: Shrine.uploaded_file(
+        'id' => SecureRandom.hex(8),
+        'storage' => 'cache',
+        'metadata' => { 'mime_type' => 'image/jpeg', 'size' => 1.megabyte }
+      ).to_json,
+    )
+    expect(user).to be_valid
+  end
 
   it "メールアドレスが既存レコードと一致する場合、無効である" do
     User.create(

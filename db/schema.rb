@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_080520) do
     t.string "unconfirmed_email"
     t.string "name"
     t.string "nickname"
-    t.string "image"
+    t.text "image_data"
     t.string "email"
     t.boolean "official", default: false
     t.integer "store_id"

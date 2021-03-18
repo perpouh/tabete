@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
   include DeviseTokenAuth::Concerns::User
+  include ImageUploader::Attachment(:image)
 
   has_many :articles, foreign_key: 'author_id'
   belongs_to :store, optional: true
