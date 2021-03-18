@@ -30,6 +30,7 @@ gem 'devise_token_auth'
 # gem 'omniauth'
 
 gem 'kaminari'
+gem 'ransack'
 
 gem 'shrine'
 

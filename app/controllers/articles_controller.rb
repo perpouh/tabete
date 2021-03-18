@@ -2,7 +2,7 @@ class ArticlesController < AuthenticatedController
   before_action :set_article, only: [:update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.ransack(search_query).result.page(params[:page]).per(20)
   end
 
   def show
@@ -45,5 +45,13 @@ class ArticlesController < AuthenticatedController
 
   def article_attributes
     params.require(:article).permit(:body, store: [:name, :address], article_images: [:image])
+  end
+
+  def search_params
+    params.permit(:body_matches_all)
+  end
+
+  def search_query
+    { 'body_matches_all' => search_params[:body_matches_all]&.split(/\s/)&.map { |t| "%#{t}%" } }
   end
 end

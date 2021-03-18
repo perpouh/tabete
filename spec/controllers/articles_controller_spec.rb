@@ -18,6 +18,10 @@ RSpec.describe ClipsController, type: :request do
       get articles_path
       expect(response).to have_http_status(:success)
     end
+    it '検索' do
+      get articles_path, params: { body_matches_all: 'テスト サンプル' }
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe '記事詳細' do
