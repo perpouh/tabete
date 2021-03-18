@@ -27,7 +27,6 @@ gem 'rack-cors'
 
 gem 'devise'
 gem 'devise_token_auth'
-gem 'cancancan'
 # gem 'omniauth'
 
 gem 'kaminari'
